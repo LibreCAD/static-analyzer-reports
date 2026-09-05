@@ -1,0 +1,231 @@
+<html>
+<head>
+<title>LibreCAD - scan-build results</title>
+<link type="text/css" rel="stylesheet" href="scanview.css"/>
+<script src="sorttable.js"></script>
+<script language='javascript' type="text/javascript">
+function SetDisplay(RowClass, DisplayVal)
+{
+  var Rows = document.getElementsByTagName("tr");
+  for ( var i = 0 ; i < Rows.length; ++i ) {
+    if (Rows[i].className == RowClass) {
+      Rows[i].style.display = DisplayVal;
+    }
+  }
+}
+
+function CopyCheckedStateToCheckButtons(SummaryCheckButton) {
+  var Inputs = document.getElementsByTagName("input");
+  for ( var i = 0 ; i < Inputs.length; ++i ) {
+    if (Inputs[i].type == "checkbox") {
+      if(Inputs[i] != SummaryCheckButton) {
+        Inputs[i].checked = SummaryCheckButton.checked;
+        Inputs[i].onclick();
+      }
+    }
+  }
+}
+
+function returnObjById( id ) {
+    if (document.getElementById)
+        var returnVar = document.getElementById(id);
+    else if (document.all)
+        var returnVar = document.all[id];
+    else if (document.layers)
+        var returnVar = document.layers[id];
+    return returnVar;
+}
+
+var NumUnchecked = 0;
+
+function ToggleDisplay(CheckButton, ClassName) {
+  if (CheckButton.checked) {
+    SetDisplay(ClassName, "");
+    if (--NumUnchecked == 0) {
+      returnObjById("AllBugsCheck").checked = true;
+    }
+  }
+  else {
+    SetDisplay(ClassName, "none");
+    NumUnchecked++;
+    returnObjById("AllBugsCheck").checked = false;
+  }
+}
+</script>
+<!-- SUMMARYENDHEAD -->
+</head>
+<body>
+<h1>LibreCAD - scan-build results</h1>
+
+<table>
+<tr><th>User:</th><td>runner@runnervmejwal</td></tr>
+<tr><th>Working Directory:</th><td>/home/runner/work/LibreCAD/LibreCAD</td></tr>
+<tr><th>Command Line:</th><td>make release -j4</td></tr>
+<tr><th>Clang Version:</th><td>Ubuntu clang version 18.1.3 (1ubuntu1)
+</td></tr>
+<tr><th>Date:</th><td>Sat Sep  5 10:27:07 2026</td></tr>
+</table>
+<h2>Bug Summary</h2><table>
+<thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">43</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr><th>Logic error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Called C++ object pointer is null</td><td class="Q">15</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_called_c++_object_pointer_is_null');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">4</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Garbage return value</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_garbage_return_value');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Result of operation is garbage or undefined</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_result_of_operation_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Uninitialized argument value</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_uninitialized_argument_value');" checked/></center></td></tr>
+<tr><th>Memory error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Double delete</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_double_delete');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Memory leak</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_memory_leak');" checked/></center></td></tr>
+<tr><th>Unused code</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unused_code_dead_assignment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead initialization</td><td class="Q">11</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unused_code_dead_initialization');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead nested assignment</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unused_code_dead_nested_assignment');" checked/></center></td></tr>
+</table>
+<h2>Reports</h2>
+
+<table class="sortable" style="table-layout:automatic">
+<thead><tr>
+  <td>Bug Group</td>
+  <td class="sorttable_sorted">Bug Type<span id="sorttable_sortfwdind">&nbsp;&#x25BE;</span></td>
+  <td>File</td>
+  <td>Function/Method</td>
+  <td class="Q">Line</td>
+  <td class="Q">Path Length</td>
+  <td class="sorttable_nosort"></td>
+  <!-- REPORTBUGCOL -->
+</tr></thead>
+<tbody>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/ui/dock_widgets/property_sheet/lc_propertysheetwidget.cpp</td><td class="DESC">collectEntitiesToModify</td><td class="Q">502</td><td class="Q">21</td><td><a href="report-236a2e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-236a2e.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">writeLWPolyline</td><td class="Q">29083</td><td class="Q">28</td><td><a href="report-276790.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-276790.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/actions/drawing/modify/lc_action_modify_line_join.cpp</td><td class="DESC">updateLine1TrimData</td><td class="Q">501</td><td class="Q">5</td><td><a href="report-3954ce.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3954ce.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/ui/components/status_bar/lc_relzerocoordinateswidget.cpp</td><td class="DESC">setRelativeZero</td><td class="Q">132</td><td class="Q">12</td><td><a href="report-68d413.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-68d413.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">addView</td><td class="Q">4385</td><td class="Q">4</td><td><a href="report-7574ec.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7574ec.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">addVport</td><td class="Q">4313</td><td class="Q">6</td><td><a href="report-76e485.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-76e485.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>libraries/libdxfrw/src/drw_entities.cpp</td><td class="DESC">encodeDwgGradientData</td><td class="Q">14689</td><td class="Q">12</td><td><a href="report-7ffb57.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7ffb57.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">importLayerForEntity</td><td class="Q">4174</td><td class="Q">9</td><td><a href="report-8333f8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8333f8.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">addUCS</td><td class="Q">4342</td><td class="Q">3</td><td><a href="report-8b164a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8b164a.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/ui/dock_widgets/property_sheet/lc_propertysheetwidget.cpp</td><td class="DESC">collectEntitiesToModify</td><td class="Q">505</td><td class="Q">23</td><td><a href="report-998289.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-998289.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/ui/dock_widgets/entity_info/lc_quickinfopointsdata.cpp</td><td class="DESC">processCoordinate</td><td class="Q">160</td><td class="Q">13</td><td><a href="report-a410de.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a410de.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">addVport</td><td class="Q">4313</td><td class="Q">6</td><td><a href="report-b25352.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b25352.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">addUCS</td><td class="Q">4369</td><td class="Q">3</td><td><a href="report-c523a3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c523a3.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">addView</td><td class="Q">4439</td><td class="Q">6</td><td><a href="report-cab1f5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cab1f5.html" -->
+</tr>
+<tr class="bt_logic_error_called_c++_object_pointer_is_null"><td class="DESC">Logic error</td><td class="DESC">Called C++ object pointer is null</td><td>librecad/src/ui/dialogs/settings/dimstyles/dimstyle_manager/support/lc_tabproxywidget.cpp</td><td class="DESC">setTargetWidget</td><td class="Q">53</td><td class="Q">9</td><td><a href="report-fd058d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fd058d.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>tools/ttf2lff/main.cpp</td><td class="DESC">main</td><td class="Q">1487</td><td class="Q">1</td><td><a href="report-2a9d1e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2a9d1e.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>librecad/src/actions/drawing/draw/dimensions/lc_actiondrawdimbaseline.cpp</td><td class="DESC">pickOriginalEntity</td><td class="Q">299</td><td class="Q">1</td><td><a href="report-56b913.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-56b913.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>libraries/libdxfrw/src/intern/dwgreader.cpp</td><td class="DESC">readDwgEntityWithOutput</td><td class="Q">8983</td><td class="Q">1</td><td><a href="report-c8fac4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c8fac4.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>libraries/libdxfrw/src/drw_header.cpp</td><td class="DESC">parseDwgImpl</td><td class="Q">2570</td><td class="Q">1</td><td><a href="report-0b2cde.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0b2cde.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>librecad/src/ui/dialogs/entity/qg_dlg_mtext.cpp</td><td class="DESC">setEntity</td><td class="Q">182</td><td class="Q">1</td><td><a href="report-3c54c7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3c54c7.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>libraries/libdxfrw/src/drw_entities.cpp</td><td class="DESC">skipTableCellStyle</td><td class="Q">2598</td><td class="Q">1</td><td><a href="report-439860.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-439860.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">writeObjects</td><td class="Q">20163</td><td class="Q">1</td><td><a href="report-525217.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-525217.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>librecad/src/lib/engine/document/selection/lc_selectedset.cpp</td><td class="DESC">add</td><td class="Q">48</td><td class="Q">1</td><td><a href="report-632540.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-632540.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>librecad/src/lib/engine/document/container/rs_entitycontainer.cpp</td><td class="DESC">debugEntityAlreadyPresentExists</td><td class="Q">1998</td><td class="Q">1</td><td><a href="report-7377a6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7377a6.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>librecad/src/ui/view/qg_graphicview.cpp</td><td class="DESC">wheelEvent</td><td class="Q">963</td><td class="Q">1</td><td><a href="report-a42657.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a42657.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>librecad/src/ui/view/qg_graphicview.cpp</td><td class="DESC">loadSettings</td><td class="Q">1353</td><td class="Q">1</td><td><a href="report-bc2516.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bc2516.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>librecad/src/lib/actions/visual_snap/lc_visual_snap_solution_solver.cpp</td><td class="DESC">addGuideEntitiesForDocumentEntity</td><td class="Q">575</td><td class="Q">1</td><td><a href="report-bcd5ed.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bcd5ed.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>librecad/src/ui/view/qg_graphicview.cpp</td><td class="DESC">loadSettings</td><td class="Q">1352</td><td class="Q">1</td><td><a href="report-e1858d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e1858d.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>libraries/libdxfrw/src/intern/dwgreader.cpp</td><td class="DESC">linkDataStorage</td><td class="Q">8164</td><td class="Q">1</td><td><a href="report-fc2c70.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fc2c70.html" -->
+</tr>
+<tr class="bt_unused_code_dead_nested_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead nested assignment</td><td>librecad/src/lib/actions/rs_snapper.cpp</td><td class="DESC">drawSnapper</td><td class="Q">1211</td><td class="Q">1</td><td><a href="report-5a2fab.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5a2fab.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">addHatch</td><td class="Q">9603</td><td class="Q">6</td><td><a href="report-2f1760.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2f1760.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>librecad/src/lib/filters/rs_filtershp.cpp</td><td class="DESC">emitParts</td><td class="Q">364</td><td class="Q">15</td><td><a href="report-9a3b2c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9a3b2c.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">linkImage</td><td class="Q">10701</td><td class="Q">6</td><td><a href="report-a68f13.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a68f13.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>librecad/src/lib/filters/rs_filterdxfrw.cpp</td><td class="DESC">writeEntities</td><td class="Q">26577</td><td class="Q">14</td><td><a href="report-e39e00.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e39e00.html" -->
+</tr>
+<tr class="bt_memory_error_double_delete"><td class="DESC">Memory error</td><td class="DESC">Double delete</td><td>librecad/src/lib/engine/overlays/highlight/lc_highlight.cpp</td><td class="DESC">removeEntity</td><td class="Q">65</td><td class="Q">17</td><td><a href="report-110c62.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-110c62.html" -->
+</tr>
+<tr class="bt_logic_error_garbage_return_value"><td class="DESC">Logic error</td><td class="DESC">Garbage return value</td><td>librecad/src/lib/engine/document/dimstyles/lc_dimstyle.cpp</td><td class="DESC">getDimensionType</td><td class="Q">1849</td><td class="Q">13</td><td><a href="report-650650.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-650650.html" -->
+</tr>
+<tr class="bt_logic_error_garbage_return_value"><td class="DESC">Logic error</td><td class="DESC">Garbage return value</td><td>librecad/src/lib/math/lc_convert.cpp</td><td class="DESC">evalAngleValue</td><td class="Q">182</td><td class="Q">9</td><td><a href="report-ca509b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ca509b.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>librecad/src/ui/dock_widgets/property_sheet/metaentity/entities/lc_propertyprovider_utils.h</td><td class="DESC">createSingleEntityCommand</td><td class="Q">200</td><td class="Q">21</td><td><a href="report-cb911c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cb911c.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>librecad/src/ui/dialogs/file/export/layers/lc_exportlayersdialogservice.cpp</td><td class="DESC">selectExportFile</td><td class="Q">194</td><td class="Q">12</td><td><a href="report-e5775a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e5775a.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>librecad/src/lib/engine/document/entities/lc_splinepoints.cpp</td><td class="DESC">offsetSpline</td><td class="Q">2070</td><td class="Q">22</td><td><a href="report-4708f4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4708f4.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>librecad/src/lib/engine/document/entities/rs_mtext.cpp</td><td class="DESC">operator()</td><td class="Q">133</td><td class="Q">14</td><td><a href="report-52cb2b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-52cb2b.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>librecad/src/lib/engine/document/entities/lc_splinepoints.cpp</td><td class="DESC">offsetCut</td><td class="Q">1915</td><td class="Q">20</td><td><a href="report-c20b0c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c20b0c.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>librecad/src/ui/components/creators/lc_menuactivator.cpp</td><td class="DESC">fromShortcut</td><td class="Q">275</td><td class="Q">10</td><td><a href="report-cb4c32.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cb4c32.html" -->
+</tr>
+</tbody>
+</table>
+
+</body></html>
